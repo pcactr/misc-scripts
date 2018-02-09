@@ -1,0 +1,14 @@
+
+module nvidia-installer 1.0;
+
+require {
+        type sysadm_t;
+        type var_log_t;
+        type ldconfig_t;
+        class capability sys_module;
+        class file write;
+}
+
+allow ldconfig_t var_log_t:file write;
+allow sysadm_t self:capability sys_module;
+

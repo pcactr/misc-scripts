@@ -1,0 +1,19 @@
+# /etc/systemd/system/nvidia-installer.service
+#
+# systemd unit for NVIDIA Driver script
+[Unit]
+Description=NVIDIA Driver Service
+
+# Uncomment if drivers are on NFS
+#After=remote-fs.target
+#Wants=remote-fs.target
+Before=display-manager.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=true
+ExecStart=/path/to/nvidia-install.sh
+TimeoutStartSec=0
+
+[Install]
+WantedBy=graphical.target
